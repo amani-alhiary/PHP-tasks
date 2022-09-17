@@ -1,221 +1,113 @@
 <?php
-// Question #1
+// indexed array
+$colors = array("Red", "Green", "Blue");
 
-echo strtoupper("Hello WORLD!")."<br>";
-echo strtolower("Hello WORLD.")."<br>";
-echo lcfirst("Hello world!")."<br>";
-echo ucwords("hello world")."<br>";
-
-
-// Question #2
-// *************************************************
-$input = ' 15:00:02';
-$date = strtotime($input);
-echo date(' h:i:s', $date)."<br>";
+echo $colors[0]."<br>"; 
+echo $colors[1] ."<br>"; 
+echo $colors[2] ."<br>"; 
 
 
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
-// Question #3
+// associative array
+$ages = array("Peter"=>22, "Clark"=>32, "John"=>28);
 
-$word = "orange";
-$mystring = "I'm a full stack deleloper at orange coding academy";
- 
-// Test if string contains the word 
-if(strpos($mystring, $word) !== false){
-    echo "Word Found!"."<br>";
-} else{
-    echo "Word Not Found!"."<br>";
-}
+echo $ages["Peter"] ."<br>";
+echo $ages["Clark"] ."<br>";
+echo $ages["John"] ."<br>";
+
+
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
 
 
-// Question#4
-// url to inspect
-$url = 'http://www.example.com/image.jpg?q=6574&t=987';
+//  multidimensional array
+$contacts = array(
+    array(
+        "name" => "Peter Parker",
+        "email" => "peterparker@mail.com",
+        "passward" => "ihimlmof",
+    ),
+    array(
+        "name" => "Clark Kent",
+        "email" => "clarkkent@mail.com",
+        "passward" => "bojpj",
 
-// parsed path
-$path = parse_url($url, PHP_URL_PATH);
+    ),
+    array(
+        "name" => "Harry Potter",
+        "email" => "harrypotter@mail.com",
+        "passward" => "rfnriojgp165",
+    )
+);
+// Access nested value
+echo "Harry Potter's Email-id is: " . $contacts[2]["email"];
 
-// extracted basename
-echo basename($path)."<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
-
-// Question#5
-$string = "user@domain.com";
-
-$explode = explode("@",$string);
-
-array_pop($explode);
-
-$newstring = join('@', $explode);
-
-echo $newstring."<br>";
-
-
-
-// Question#6
-$str = 'amanyheary@gmail.com';
-echo substr( $str, -3 ) ."<br>";
-
-
-
-
-//   Question#7
-function randomPassword() {
-    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-    for ($i = 0; $i < 8; $i++) {
-        $n = rand(0, count($alphabet)-1);
-        $pass[$i] = $alphabet[$n];
+for ($i=0; $i<count($contacts); $i++){
+    if ($contacts[$i]["name"]=="Clark Kent"){
+        echo "the email address is : ". $contacts[$i]["email"]."<br>";
+        echo "and the Passward is : ". $contacts[$i]["passward"];
     }
-    echo $pass."<br>";
 }
 
 
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
 
 
 
-//   Question#8
+$products= array(
+    array(
+        "productName"=>"black dress",
+        "Price"=>"70 JOD",
+        "sizes"=>"S, M, L",
+    ),
+    array(
+        "productName"=>"jumpsuit",
+        "Price"=>"110 JOD",
+        "sizes"=>"S, M, L, XL",
+    ),
+    array(
+        "productName"=>"Blue Maxi Dress",
+        "Price"=>"250 JOD",
+        "sizes"=>"S, M, L",
+    )
 
-$str = "That new trainee is so genius";
- 
-// Word to be replaced
-$w1 = "That";
- 
-//  Replaced by
-$w2 = "Our";
+    );
+    echo "Our Products are:"."<br>";
+for ($i=0; $i<count($products); $i++){
+    
+    echo $products[$i]["productName"]."<br>";
+}
+
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo `<table border ="1" style='border-collapse:collapse '  >`;
+
+echo "<th>"; echo "product Name"."&nbsp"."&nbsp"."&nbsp"."&nbsp";echo "</th>";
+echo "<th>";echo "Price"."&nbsp"."&nbsp"."&nbsp"."&nbsp";echo "</th>";
+echo "<th>";echo "sizes"."&nbsp"."&nbsp"."&nbsp"."&nbsp";echo "</th>";
+
+
+for ($i=0; $i<3; $i++){
+    echo "<tr>";
+    
+    echo "<td>"; echo $products[$i]["productName"]; echo "</td>";
+    echo "<td>"; echo $products[$i]["Price"]; echo "</td>";
+    echo "<td>";echo $products[$i]["sizes"]; echo "</td>";
    
-// Using str_replace() function
-// to replace the word
-$str = str_replace($w1, $w2, $str);
- 
-// Printing the result
-echo $str."<br>";
-
-
-
-
-
-//   Question#9
-
-$string1 = 'Dragonball';
-$string2 = 'Dragonboll';
-
-$array1 = str_split($string1);
-$array2 = str_split($string2);
-
-$result = array_diff_assoc($array1, $array2);
-
-
-$first_diff = key($result);
-
-
-echo "The first difference between the strings is at position " . $first_diff . " '$string1[$first_diff]' vs '$string2[$first_diff]'."."<br>";
-
-
-
-
-
-//   Question#10
-
-
-$c = array("Twinkle, twinkle little star");
-echo var_dump($c) . "<br>";
-
-
-
-
-//   Question#11
-$str = 'a';
-echo ++$str."<br>"; // prints 'b'
-
-$str = 'z';
-echo ++$str."<br>"; // prints 'aa' 
-
-
-
-//   Question#12
-
-
-$string = 'The brown fox.';
-$replacement = 'quick ';
-
-echo substr_replace($string, $replacement, 2, 0)."<br>"; 
-
-
-
-//   Question#13
-// str-replace
-$string13 = 05405816.0269;
-if (ltrim($string13, '0') != '') {
-    $string13 = ltrim($string13, '0');
-} else {
-    $string13 = '0';
-}
-echo $string13."<br>";
-
-
-
-
-
-
-// Question#14
-$str14 = "The quick brown fox jumos over the lazy dog";
-echo str_replace("fox","",$str14)."<br>"; 
-
-
-
-
-
-
-// Question#15
-$str15 = "hello everybody ---";
-echo preg_replace("![^a-z0-9]+!i", "-", $str15)."<br>";
-
-
-
-// Question#16
-function RemoveSpecialChar($str) {
- 
-    // Using str_replace() function
-    // to replace the word
-    $res = str_replace( array( '\'', '"',
-    ',' , ';', '<', '>' ), ' ', $str);
-
-    // Returning the result
-    return $res;
-    }
-
-// Given string
-$str = "Example,to remove<the>Special'Char;";
-
-// Function calling
-$str1 = RemoveSpecialChar($str);
-
-// Printing the result
-echo $str1."<br>";
-
-
-
-// Question#17
-$inputstring= "Hello my name is Amani Alhiary and this is my work";
-$pieces = explode(" ", $inputstring);
-$first_part = implode(" ", array_splice($pieces, 0, 5));
-
-
-echo $first_part."<br>";
-
-
-// Question#18
-$name="'John,''Smith'";
-$result = str_replace("'", '', $name);
-echo "The actual value is=",$name,"<br>";
-echo "After removing the comma(,)=",$result,"<br>";
-
-
-// Question#19
-foreach (range('A', 'Z') as $char) {
-    echo $char . "\n";
+    echo "</tr>";
 }
 
 
